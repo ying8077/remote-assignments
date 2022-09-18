@@ -2,10 +2,9 @@
     margin: 0;
     padding: 0;
 }
-body{
-    max-width: 1200px;
-    margin: 0 auto;
-}
+html, body {
+    width: 100%;
+} 
 header .container{
     display: flex;
     justify-content: space-between;
@@ -27,6 +26,8 @@ a{
     align-items: center;
 }
 section .container{
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;

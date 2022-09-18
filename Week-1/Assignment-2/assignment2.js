@@ -11,17 +11,8 @@ function countAandB(input) {
 function toNumber(input) {
     let arr = [];
     for(let i = 0; i<input.length; i++){
-        if(input[i]==='a'){
-            arr.push(1);
-        }else if(input[i]==='b'){
-            arr.push(2);
-        }else if(input[i]==='c'){
-            arr.push(3);
-        }else if(input[i]==='d'){
-            arr.push(4);
-        }else{
-            arr.push(5);
-        }
+        let num = input[i].toLowerCase().charCodeAt(0) - 96;
+        arr.push(num);
     }
     return arr;
 }
