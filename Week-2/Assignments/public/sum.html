@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <label>Enter a number: </label>
+        <input type="text" name="num">
+        <button id="btn-summit">get result</button>
+    </div>
+    <div id="result"></div>
+
+
+</body>
+
+</html>
+
+<script>
+    const button = document.querySelector('#btn-summit');
+    const input = document.querySelector('input');
+    const result = document.querySelector('#result');
+
+    console.log();
+    function getJSON(url) {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    let data = JSON.parse(xhr.responseText);
+                    // console.log(data);
+                    resolve(data);
+                } else {
+                    reject(Error(xhr.statusText));
+                }
+            };
+            xhr.onerror = () => reject(Error('A network error occured.'));
+            xhr.send();
+        })
+    }
+
+    button.addEventListener('click', (event) => {
+        getJSON(`http://localhost:3000/data?number=${input.value}`)
+            .then(val => result.innerHTML = val);
+    });
+
+</script>
